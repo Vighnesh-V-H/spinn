@@ -1,11 +1,12 @@
-import { Hono } from "hono";
+import { type TRPCRouterRecord } from "@trpc/server";
+import { publicProcedure } from "@/lib/trpc";
 
-export const healthRoutes = new Hono();
-
-healthRoutes.get("/health", (c) => {
-  return c.json({
-    status: "ok",
-    service: "server",
-    timestamp: new Date().toISOString(),
-  });
-});
+export const healthRouter = {
+  check: publicProcedure.query(() => {
+    console.log("Health check endpoint called");
+    return {
+      status: "ok",
+      timestamp: new Date().toISOString(),
+    };
+  }),
+} satisfies TRPCRouterRecord;

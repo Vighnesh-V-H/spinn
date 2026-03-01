@@ -1,11 +1,8 @@
-import { Hono } from "hono";
+import { router } from "@/lib/trpc";
+import { healthRouter } from "./health";
 
-import { authRoutes } from "@/routes/v1/auth";
-import { healthRoutes } from "@/routes/v1/health";
-import { trpcRoutes } from "@/routes/v1/trpc";
+export const appRouter = router({
+  health: healthRouter,
+});
 
-export function registerRoutes(app: Hono) {
-  app.route("/api/v1", healthRoutes);
-  app.route("/api/v1", trpcRoutes);
-  app.route("/api/v1", authRoutes);
-}
+export type AppRouter = typeof appRouter;

@@ -1,9 +1,15 @@
-import { Hono } from "hono";
+import { router, publicProcedure } from "@/lib/trpc";
+import { protectedProcedure } from "../trpc";
 
-import { auth } from "@/lib/auth";
+export const authRouter = router({
+  getSession: publicProcedure.query(async ({ ctx }) => {
+    return {
+      user: ctx.user,
+      session: ctx.session,
+    };
+  }),
 
-export const authRoutes = new Hono();
-
-authRoutes.all("/auth/*", async (c) => {
-  return auth.handler(c.req.raw);
+  me: protectedProcedure.query(({ ctx }) => {
+    return ctx.user;
+  }),
 });

@@ -16,6 +16,7 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@hono/trpc-server": "^0.4.2",
     "@trpc/client": "^11.10.0",
     "@trpc/server": "^11.10.0",
     "@types/pg": "^8.16.0",
@@ -23,6 +24,7 @@
     "dotenv": "^17.3.1",
     "drizzle-orm": "^0.45.1",
     "hono": "^4.12.3",
-    "pg": "^8.19.0"
+    "pg": "^8.19.0",
+    "superjson": "^2.2.6"
   }
 }

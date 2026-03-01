@@ -1,15 +1,22 @@
 import "dotenv/config";
-
 import { Hono } from "hono";
-import { cors } from "hono/cors";
+import { trpcServer } from "@hono/trpc-server";
 
-import { registerRoutes } from "@/routes/v1";
+import { auth } from "@/lib/auth";
+import { appRouter } from "@/routes/v1";
 
 const app = new Hono();
 
-app.use("*", cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(
+  "/api/v1/*",
+  trpcServer({
+    router: appRouter,
+  }),
+);
 
-registerRoutes(app);
+app.on(["POST", "GET"], "/api/auth/**", (c) => {
+  return auth.handler(c.req.raw);
+});
 
 const port = Number(process.env.PORT ?? 8080);
 
