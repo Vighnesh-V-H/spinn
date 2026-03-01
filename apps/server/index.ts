@@ -11,7 +11,7 @@ app.use("*", cors({ origin: "http://localhost:3000", credentials: true }));
 
 registerRoutes(app);
 
-const port = Number(process.env.PORT ?? 3001);
+const port = Number(process.env.PORT ?? 8080);
 
 console.log(`Server running at http://localhost:${port}`);
 
