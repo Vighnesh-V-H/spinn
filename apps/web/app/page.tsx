@@ -8,8 +8,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { trpc } from "@/lib/trpc";
 
-export default function Home() {
+export default async function Home() {
+  const health = await trpc.health.check.query().catch(() => null);
+
   return (
     <main className='min-h-dvh bg-[radial-gradient(circle_at_top,_hsl(240_10%_12%)_0%,_hsl(240_10%_10%)_45%,_hsl(240_11%_8%)_100%)] px-4 py-10 sm:px-6'>
       <section className='mx-auto w-full max-w-2xl'>
@@ -19,6 +22,10 @@ export default function Home() {
             <CardDescription>
               Simple, clean and responsive authentication flow powered by Better
               Auth.
+            </CardDescription>
+            <CardDescription>
+              API health: {health?.status ?? "unavailable"}
+              {health?.timestamp ? ` (${health.timestamp})` : ""}
             </CardDescription>
           </CardHeader>
 

@@ -1,4 +1,4 @@
-import { publicProcedure, router } from "@/lib/trpc";
+import { publicProcedure, router } from "@/lib/trpc/procedure";
 
 export const appRouter = router({
   health: publicProcedure.query(() => ({

@@ -1,9 +1,9 @@
 {
-  "extends": "@repo/typescript-config/nextjs.json",
+  "extends": "@spinn/typescript-config/nextjs.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*", "../server/src/*"]
     },
     "plugins": [
       {

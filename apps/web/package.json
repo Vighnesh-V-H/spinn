@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "@spinn/web",
   "version": "0.1.0",
   "type": "module",
   "private": true,
@@ -11,10 +11,12 @@
     "check-types": "next typegen && tsc --noEmit"
   },
   "dependencies": {
+    "@spinn/server": "workspace:*",
     "@radix-ui/react-label": "^2.1.8",
     "@radix-ui/react-separator": "^1.1.8",
     "@radix-ui/react-slot": "^1.2.4",
-    "@repo/ui": "*",
+    "@trpc/client": "^11.10.0",
+    "@spinn/ui": "workspace:*",
     "better-auth": "^1.4.20",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -22,11 +24,12 @@
     "next": "16.1.5",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "superjson": "^2.2.6",
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
-    "@repo/eslint-config": "*",
-    "@repo/typescript-config": "*",
+    "@spinn/eslint-config": "workspace:*",
+    "@spinn/typescript-config": "workspace:*",
     "@types/node": "^22.15.3",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",

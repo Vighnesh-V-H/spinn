@@ -1,5 +1,5 @@
 import { type TRPCRouterRecord } from "@trpc/server";
-import { publicProcedure } from "@/lib/trpc";
+import { publicProcedure } from "@/lib/trpc/procedure";
 
 export const healthRouter = {
   check: publicProcedure.query(() => {
