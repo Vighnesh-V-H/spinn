@@ -4,6 +4,7 @@ import {
   text,
   boolean,
   timestamp,
+  uniqueIndex,
 } from "drizzle-orm/pg-core";
 
 export const user = pgTable("user", {
@@ -84,3 +85,28 @@ export const apiKey = pgTable("api_key", {
     .notNull(),
   deletedAt: timestamp("deleted_at"),
 });
+
+export const functions = pgTable(
+  "functions",
+  {
+    id: text("id").primaryKey(),
+    userId: text("user_id")
+      .notNull()
+      .references(() => user.id, { onDelete: "cascade" }),
+    functionId: text("function_id").notNull(),
+    callbackURL: text("callback_url").notNull(),
+    event: text("event").notNull(),
+    retries: integer("retries")
+      .notNull()
+      .$defaultFn(() => 0),
+    createdAt: timestamp("created_at")
+      .$defaultFn(() => new Date())
+      .notNull(),
+    updatedAt: timestamp("updated_at")
+      .$defaultFn(() => new Date())
+      .notNull(),
+  },
+  (table) => [
+    uniqueIndex("user_function_unique").on(table.userId, table.functionId),
+  ],
+);

@@ -35,7 +35,7 @@ export class Spinn {
       event: f.event,
     }));
 
-    await api.post("http://localhost:8080/registerfunction", {
+    await api.post("http://localhost:8080/functions.register", {
       apiKey: this.apiKey,
       callbackURL: this.callbackURL,
       functions: metadata,
