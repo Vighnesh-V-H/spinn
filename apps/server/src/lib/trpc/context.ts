@@ -2,7 +2,6 @@ import { initTRPC, TRPCError } from "@trpc/server";
 import type { FetchCreateContextFnOptions } from "@trpc/server/adapters/fetch";
 import { auth } from "@/lib/auth";
 import type { User, Session } from "better-auth";
-import superjson from "superjson";
 
 export interface Context extends Record<string, unknown> {
   user: User | null;

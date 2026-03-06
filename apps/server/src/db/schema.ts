@@ -65,3 +65,22 @@ export const verification = pgTable("verification", {
     () => /* @__PURE__ */ new Date(),
   ),
 });
+
+export const apiKey = pgTable("api_key", {
+  id: text("id").primaryKey(),
+  userId: text("user_id")
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" }),
+  name: text("name")
+    .notNull()
+    .$defaultFn(() => "default"),
+  publicPart: text("public_part").notNull().unique(),
+  hashedSecret: text("hashed_secret").notNull(),
+  createdAt: timestamp("created_at")
+    .$defaultFn(() => new Date())
+    .notNull(),
+  updatedAt: timestamp("updated_at")
+    .$defaultFn(() => new Date())
+    .notNull(),
+  deletedAt: timestamp("deleted_at"),
+});

@@ -24,10 +24,12 @@
     "@trpc/client": "^11.10.0",
     "@trpc/server": "^11.10.0",
     "@types/pg": "^8.16.0",
+    "axios": "^1.13.6",
     "better-auth": "^1.4.20",
     "dotenv": "^17.3.1",
     "drizzle-orm": "^0.45.1",
     "hono": "^4.12.3",
+    "nanoid": "^5.1.6",
     "pg": "^8.19.0",
     "superjson": "^2.2.6"
   }

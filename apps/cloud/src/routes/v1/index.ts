@@ -1,10 +1,8 @@
 import { router } from "@/lib/trpc/procedure";
-import { apiKeyRouter } from "./api-key";
 import { healthRouter } from "./health";
 
 export const appRouter = router({
   health: healthRouter,
-  apikey: apiKeyRouter,
 });
 
 export * from "@/lib/trpc/procedure";
